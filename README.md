@@ -18,13 +18,13 @@ EMS/
 ### Backend (Server)
 
 ```bash
-EMS/cd server
+cd server
 npm install
 npm start
 
 ### Frontend
 
 ```bash
-EMS/cd frontend
+cd frontend
 npm install
 npm run dev
