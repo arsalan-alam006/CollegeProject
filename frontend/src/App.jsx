@@ -6,20 +6,23 @@ import EmployeeDashboard from "./pages/EmployeeDashboard";
 
 import PrivateRoutes from "./utils/PrivateRoutes";
 import RoleBaseRoutes from "./utils/RoleBaseRoutes";
+
 import AdminSummary from "./components/dashboard/AdminSummary";
 import DepartmentList from "./components/department/DepartmentList";
 import AddDepartment from "./components/department/AddDepartment";
-
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
+        {/* Redirect root */}
         <Route path="/" element={<Navigate to="/login" />} />
 
+        {/* Login */}
         <Route path="/login" element={<Login />} />
 
+        {/* ADMIN DASHBOARD */}
         <Route
           path="/admin-dashboard"
           element={
@@ -28,14 +31,15 @@ function App() {
                 <AdminDashboard />
               </RoleBaseRoutes>
             </PrivateRoutes>
-          }>
-
-          <Route index element={<AdminSummary />}></Route>
-
-          <Route path="/admin-dashboard/departments" element={<DepartmentList />}></Route>
-          <Route path="/admin-dashboard/add-department" element={<AddDepartment/>}></Route>
+          }
+        >
+          {/* Nested admin routes */}
+          <Route index element={<AdminSummary />} />
+          <Route path="departments" element={<DepartmentList />} />
+          <Route path="add-department" element={<AddDepartment />} />
         </Route>
 
+        {/* EMPLOYEE DASHBOARD */}
         <Route
           path="/employee-dashboard"
           element={
@@ -47,7 +51,7 @@ function App() {
           }
         />
 
-        {/* OPTIONAL: 404 */}
+        {/* 404 */}
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
 
       </Routes>
